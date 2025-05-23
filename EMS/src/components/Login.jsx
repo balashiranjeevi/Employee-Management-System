@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import './style.css';
+import "./style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [values, setValues] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const [error, setError] = useState(null);
@@ -15,25 +15,22 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3000/auth/adminlogin", values)
-      .then(result => {
-        if (result.data.loginStatus){
+    axios
+      .post("http://localhost:3000/auth/adminlogin", values)
+      .then((result) => {
+        if (result.data.loginStatus) {
           navigate("/dashboard");
-        }else{
+        } else {
           setError(result.data.Error);
         }
-        
-
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center vh-100 loginPage">
       <div className="p3 rounded w-25 border loginForm">
-        <div className="text-warning">
-          {error && error}
-        </div>
+        <div className="text-warning">{error && error}</div>
         <h2>Login page</h2>
         <form onSubmit={handleSubmit}>
           <div>
@@ -60,7 +57,9 @@ const Login = () => {
               id="password"
               name="password"
               placeholder="Enter Password"
-              onChange={(e) => setValues({ ...values, password: e.target.value })}
+              onChange={(e) =>
+                setValues({ ...values, password: e.target.value })
+              }
               className="form-control rounded-0"
               required
             />
