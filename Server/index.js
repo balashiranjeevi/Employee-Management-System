@@ -13,11 +13,10 @@ app.use(
   })
 );
 
-// ➕ Serve static files
 app.use("/images", express.static("public/images"));
 app.use(express.json());
-
 app.use("/auth", adminRouter);
+app.use(express.static("Public"));
 
 app.listen(3000, () => {
   console.log("Server is running");

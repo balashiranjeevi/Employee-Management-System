@@ -83,3 +83,11 @@
 .loginForm button:hover {
   background: linear-gradient(135deg, #148f77, #1e8449);
 }
+
+/* Employee.jsx for reduce the size of the employee image in employee list */
+
+.employee_image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
