@@ -52,16 +52,11 @@ const AddEmployee = () => {
       formData.append(key, employeeData[key]);
     });
 
-    // You can console.log formData entries for debugging if needed:
-    // for (let pair of formData.entries()) {
-    //     console.log(pair[0]+ ': ' + pair[1]);
-    // }
-
     axios
       .post("http://localhost:3000/auth/add_employee", formData)
       .then((res) => {
         if (res.data.Status) {
-          navigate("/dashboard/employees");
+          navigate("/dashboard/employee");
         } else {
           alert(res.data.Error);
         }
