@@ -144,4 +144,44 @@ router.delete("/delete_employee/:id", (req, res) => {
   });
 });
 
+router.get("/admin_count", (req, res) => {
+  const sql = "SELECT COUNT(admin_id) AS admin FROM admin";
+  con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
+router.get("/employee_count", (req, res) => {
+  const sql = "SELECT COUNT(id) AS employee FROM employee";
+  con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
+router.get("/employee_count", (req, res) => {
+  const sql = "SELECT COUNT(id) AS employee FROM employee";
+  con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
+router.get("/salary_count", (req, res) => {
+  const sql = "SELECT SUM(salary) AS salary FROM employee";
+  con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
+router.get("/admin_records", (req, res) => {
+  const sql = "SELECT * FROM admin";
+  con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
 export { router as adminRouter };
