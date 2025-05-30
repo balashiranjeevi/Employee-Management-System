@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 const AddCategory = () => {
   const [category, setCategory] = useState();
@@ -19,8 +20,8 @@ const AddCategory = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center h-75">
-      <div className="p3 rounded w-25 border">
+    <div className="add-category-wrapper">
+      <div className="add-category-card">
         <h2>Add Category</h2>
         <form onSubmit={handleSubmit}>
           <div>
@@ -28,19 +29,16 @@ const AddCategory = () => {
               <strong>Category:</strong>
             </label>
             <input
-              type="Category"
+              type="text"
               id="Category"
               name="Category"
               autoComplete="off"
-              placeholder="Add Category"
+              placeholder="Enter category name"
               onChange={(e) => setCategory(e.target.value)}
-              className="form-control rounded-0"
               required
             />
           </div>
-          <button className="btn btn-success w-100 rounded-0">
-            Add Category
-          </button>
+          <button type="submit">Add Category</button>
         </form>
       </div>
     </div>
