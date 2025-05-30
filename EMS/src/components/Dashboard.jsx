@@ -16,72 +16,77 @@ const Dashboard = () => {
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        {/* Sidebar */}
+        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark shadow-sm min-vh-100">
+          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-3 text-white">
             <Link
               to="/dashboard"
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
+              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
             >
-              <span className="fs-5 fw-bolder d-none d-sm-inline">
+              <span className="fs-4 fw-bold d-none d-sm-inline">
                 Code with Bala
               </span>
             </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li className="w-100">
-                <Link
-                  to="/dashboard"
-                  className="nav-link px-0 align-middle text-white "
-                >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Dashboard</span>
+            <hr className="border-white w-100" />
+
+            {/* Navigation Links */}
+            <ul className="nav nav-pills flex-column mb-auto w-100" id="menu">
+              <li>
+                <Link to="/dashboard" className="nav-link text-white px-3 py-2">
+                  <i className="bi bi-speedometer2 me-2"></i>
+                  <span className="d-none d-sm-inline">Dashboard</span>
                 </Link>
               </li>
-              <li className="w-100">
+              <li>
                 <Link
                   to="/dashboard/employee"
-                  className="nav-link px-0 align-middle text-white"
+                  className="nav-link text-white px-3 py-2"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Manage Employees
-                  </span>
+                  <i className="bi bi-people me-2"></i>
+                  <span className="d-none d-sm-inline">Manage Employees</span>
                 </Link>
               </li>
-              <li className="w-100">
+              <li>
                 <Link
                   to="/dashboard/category"
-                  className="nav-link px-0 align-middle text-white"
+                  className="nav-link text-white px-3 py-2"
                 >
-                  <i className="fs-4 bi-columns ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Category</span>
+                  <i className="bi bi-columns me-2"></i>
+                  <span className="d-none d-sm-inline">Category</span>
                 </Link>
               </li>
-              <li className="w-100">
+              <li>
                 <Link
                   to="/dashboard/profile"
-                  className="nav-link px-0 align-middle text-white"
+                  className="nav-link text-white px-3 py-2"
                 >
-                  <i className="fs-4 bi-person ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Profile</span>
+                  <i className="bi bi-person me-2"></i>
+                  <span className="d-none d-sm-inline">Profile</span>
                 </Link>
               </li>
-              <li className="w-100" onClick={handleLogout}>
-                <Link className="nav-link px-0 align-middle text-white">
-                  <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
-                </Link>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-link nav-link text-white px-3 py-2 text-start"
+                >
+                  <i className="bi bi-power me-2"></i>
+                  <span className="d-none d-sm-inline">Logout</span>
+                </button>
               </li>
             </ul>
           </div>
         </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow">
-            <h4>Employee Management System</h4>
+
+        {/* Main Content */}
+        <div className="col p-0">
+          <nav className="navbar navbar-light bg-light shadow-sm px-4">
+            <span className="navbar-brand mb-0 h4 fw-semibold">
+              Employee Management System
+            </span>
+          </nav>
+          <div className="p-3">
+            <Outlet />
           </div>
-          <Outlet />
         </div>
       </div>
     </div>

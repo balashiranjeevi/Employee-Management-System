@@ -67,99 +67,119 @@ const EditEmployee = () => {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center h-100">
-      <div className="p-4 rounded w-50 border">
-        <h2>Edit Employee</h2>
-        <form className="col-12" onSubmit={handleSubmit}>
-          {/* Name */}
-          <div className="mb-3">
-            <label htmlFor="name">
-              <strong>Name</strong>
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={employeeData.name}
-              onChange={handleChange}
-              className="form-control rounded-0"
-              placeholder="Enter name"
-              required
-            />
-          </div>
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-md-8 col-lg-6">
+          <div className="card shadow-sm border-0 rounded-4">
+            <div className="card-body p-4">
+              <h3 className="text-center mb-4 fw-bold text-success">
+                Edit Employee
+              </h3>
+              <form
+                onSubmit={handleSubmit}
+                className="needs-validation"
+                noValidate
+              >
+                {/* Name */}
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label fw-semibold">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={employeeData.name}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Enter full name"
+                    required
+                  />
+                </div>
 
-          {/* Email */}
-          <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Email</strong>
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={employeeData.email}
-              onChange={handleChange}
-              className="form-control rounded-0"
-              placeholder="Enter email"
-              required
-            />
-          </div>
+                {/* Email */}
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label fw-semibold">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={employeeData.email}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Enter email"
+                    required
+                  />
+                </div>
 
-          {/* Salary */}
-          <div className="mb-3">
-            <label htmlFor="salary">
-              <strong>Salary</strong>
-            </label>
-            <input
-              type="number"
-              name="salary"
-              value={employeeData.salary}
-              onChange={handleChange}
-              className="form-control rounded-0"
-              placeholder="Enter salary"
-              required
-            />
-          </div>
+                {/* Salary */}
+                <div className="mb-3">
+                  <label htmlFor="salary" className="form-label fw-semibold">
+                    Salary
+                  </label>
+                  <input
+                    type="number"
+                    name="salary"
+                    value={employeeData.salary}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Enter salary"
+                    required
+                  />
+                </div>
 
-          {/* Address */}
-          <div className="mb-3">
-            <label htmlFor="address">
-              <strong>Address</strong>
-            </label>
-            <textarea
-              name="address"
-              value={employeeData.address}
-              onChange={handleChange}
-              className="form-control rounded-0"
-              placeholder="Enter address"
-              rows="3"
-              required
-            ></textarea>
-          </div>
+                {/* Address */}
+                <div className="mb-3">
+                  <label htmlFor="address" className="form-label fw-semibold">
+                    Address
+                  </label>
+                  <textarea
+                    name="address"
+                    value={employeeData.address}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Enter address"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
 
-          {/* Category */}
-          <div className="mb-3">
-            <label htmlFor="category_id">
-              <strong>Category</strong>
-            </label>
-            <select
-              name="category_id"
-              value={employeeData.category_id}
-              onChange={handleChange}
-              className="form-control rounded-0"
-              required
-            >
-              <option value="">-- Select Category --</option>
-              {category.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
-          </div>
+                {/* Category */}
+                <div className="mb-4">
+                  <label
+                    htmlFor="category_id"
+                    className="form-label fw-semibold"
+                  >
+                    Category
+                  </label>
+                  <select
+                    name="category_id"
+                    value={employeeData.category_id}
+                    onChange={handleChange}
+                    className="form-select"
+                    required
+                  >
+                    <option value="">-- Select Category --</option>
+                    {category.map((cat) => (
+                      <option key={cat.id} value={cat.id}>
+                        {cat.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-          <button type="submit" className="btn btn-success w-100 rounded-0">
-            Edit Employee
-          </button>
-        </form>
+                <div className="d-grid">
+                  <button
+                    type="submit"
+                    className="btn btn-success fw-semibold py-2 rounded-3"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
