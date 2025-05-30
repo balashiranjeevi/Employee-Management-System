@@ -56,60 +56,65 @@ const Home = () => {
   };
 
   return (
-    <div className="p-3 mt-3">
-      <div className="d-flex justify-content-around">
-        <div className="px-3 pt-2 pb-3 border shadow-sm w-25">
-          <div className="text-center pb-1">
-            <h4>Admin</h4>
-          </div>
-          <hr />
-          <div className="d-flex justify-content-between">
-            <h5>Total:</h5>
-            <h5>{adminTotal}</h5>
-          </div>
-        </div>
-        <div className="px-3 pt-2 pb-3 border shadow-sm w-25">
-          <div className="text-center pb-1">
-            <h4>Employee</h4>
-          </div>
-          <hr />
-          <div className="d-flex justify-content-between">
-            <h5>Total:</h5>
-            <h5>{employeeTotal}</h5>
+    <div className="container py-4">
+      {/* Dashboard Cards */}
+      <div className="row g-4">
+        <div className="col-md-4">
+          <div className="card shadow-sm border-0">
+            <div className="card-body text-center">
+              <h5 className="card-title text-muted">Admins</h5>
+              <h3 className="card-text fw-bold">{adminTotal}</h3>
+            </div>
           </div>
         </div>
-        <div className="px-3 pt-2 pb-3 border shadow-sm w-25">
-          <div className="text-center pb-1">
-            <h4>Salary</h4>
+        <div className="col-md-4">
+          <div className="card shadow-sm border-0">
+            <div className="card-body text-center">
+              <h5 className="card-title text-muted">Employees</h5>
+              <h3 className="card-text fw-bold">{employeeTotal}</h3>
+            </div>
           </div>
-          <hr />
-          <div className="d-flex justify-content-between">
-            <h5>Total:</h5>
-            <h5>{salaryTotal}</h5>
+        </div>
+        <div className="col-md-4">
+          <div className="card shadow-sm border-0">
+            <div className="card-body text-center">
+              <h5 className="card-title text-muted">Salaries</h5>
+              <h3 className="card-text fw-bold">{salaryTotal}</h3>
+            </div>
           </div>
         </div>
       </div>
-      <div className="mt-4 px-5 pt-3">
-        <h3>List of Admins</h3>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {admins.map((a) => (
-              <tr key={a.email}>
-                <td>{a.email}</td>
-                <td>
-                  <button className="btn btn-info btn-sm me-3">Edit</button>
-                  <button className="btn btn-warning btn-sm">Delete</button>
-                </td>
+
+      {/* Admin Table */}
+      <div className="card shadow-sm border-0 mt-5">
+        <div className="card-header bg-white">
+          <h5 className="mb-0">List of Admins</h5>
+        </div>
+        <div className="card-body p-0">
+          <table className="table table-hover mb-0">
+            <thead className="table-light">
+              <tr>
+                <th>Email</th>
+                <th className="text-end">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {admins.map((a) => (
+                <tr key={a.email}>
+                  <td>{a.email}</td>
+                  <td className="text-end">
+                    <button className="btn btn-outline-primary btn-sm me-2">
+                      Edit
+                    </button>
+                    <button className="btn btn-outline-danger btn-sm">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
