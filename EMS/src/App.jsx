@@ -33,10 +33,6 @@ function App() {
             path="/dashboard/edit_employee/:id"
             element={<EditEmployee />}
           ></Route>
-          <Route
-            path="/dashboard/edit_employee/:id"
-            element={<EditEmployee />}
-          ></Route>
         </Route>
       </Routes>
     </BrowserRouter>
