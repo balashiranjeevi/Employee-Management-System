@@ -72,12 +72,12 @@ const Home = () => {
                   <td>{index + 1}</td>
                   <td>{admin.email}</td>
                   <td className="text-end">
-                    <button className="btn btn-outline-primary btn-sm me-2">
-                      Edit
-                    </button>
-                    <button className="btn btn-outline-danger btn-sm">
-                      Delete
-                    </button>
+                    <a
+                      href={`mailto:${admin.email}`}
+                      className="btn btn-dark btn-sm fw-bold"
+                    >
+                      Send Email
+                    </a>
                   </td>
                 </tr>
               ))}
