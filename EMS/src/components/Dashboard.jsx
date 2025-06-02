@@ -1,18 +1,49 @@
-import React from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
 
+// Reusable Sidebar Link component
+const SidebarLink = ({ to, icon, label }) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  return (
+    <li>
+      <Link
+        to={to}
+        className={`nav-link text-white px-3 py-2 ${
+          isActive ? "bg-secondary" : ""
+        }`}
+      >
+        <i className={`bi ${icon} me-2`}></i>
+        <span className="d-none d-sm-inline">{label}</span>
+      </Link>
+    </li>
+  );
+};
+
 const Dashboard = () => {
   const navigate = useNavigate();
-  axios.defaults.withCredentials = true;
-  const handleLogout = () => {
-    axios.get("http://localhost:3000/auth/logout").then((result) => {
+
+  useEffect(() => {
+    axios.defaults.withCredentials = true;
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      const result = await axios.get("http://localhost:3000/auth/logout");
       if (result.data.Status) {
         navigate("/adminlogin");
+      } else {
+        alert("Logout failed.");
       }
-    });
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("An error occurred during logout.");
+    }
   };
+
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -21,7 +52,7 @@ const Dashboard = () => {
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-3 text-white">
             <Link
               to="/dashboard"
-              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+              className="d-flex align-items-center mb-3 text-white text-decoration-none"
             >
               <span className="fs-4 fw-bold d-none d-sm-inline">
                 Code with Bala
@@ -31,39 +62,26 @@ const Dashboard = () => {
 
             {/* Navigation Links */}
             <ul className="nav nav-pills flex-column mb-auto w-100" id="menu">
-              <li>
-                <Link to="/dashboard" className="nav-link text-white px-3 py-2">
-                  <i className="bi bi-speedometer2 me-2"></i>
-                  <span className="d-none d-sm-inline">Dashboard</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/employee"
-                  className="nav-link text-white px-3 py-2"
-                >
-                  <i className="bi bi-people me-2"></i>
-                  <span className="d-none d-sm-inline">Manage Employees</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/category"
-                  className="nav-link text-white px-3 py-2"
-                >
-                  <i className="bi bi-columns me-2"></i>
-                  <span className="d-none d-sm-inline">Category</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/profile"
-                  className="nav-link text-white px-3 py-2"
-                >
-                  <i className="bi bi-person me-2"></i>
-                  <span className="d-none d-sm-inline">Profile</span>
-                </Link>
-              </li>
+              <SidebarLink
+                to="/dashboard"
+                icon="bi-speedometer2"
+                label="Dashboard"
+              />
+              <SidebarLink
+                to="/dashboard/employee"
+                icon="bi-people"
+                label="Manage Employees"
+              />
+              <SidebarLink
+                to="/dashboard/category"
+                icon="bi-columns"
+                label="Category"
+              />
+              <SidebarLink
+                to="/dashboard/profile"
+                icon="bi-person"
+                label="Profile"
+              />
               <li>
                 <button
                   onClick={handleLogout}
