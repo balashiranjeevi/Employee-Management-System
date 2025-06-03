@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
@@ -25,6 +25,7 @@ const SidebarLink = ({ to, icon, label }) => {
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [role, setRole] = useState("Admin");
 
   useEffect(() => {
     axios.defaults.withCredentials = true;
@@ -42,6 +43,10 @@ const Dashboard = () => {
       console.error("Logout error:", error);
       alert("An error occurred during logout.");
     }
+  };
+
+  const handleToggle = () => {
+    setRole((prevRole) => (prevRole === "Admin" ? "Employee" : "Admin"));
   };
 
   return (
@@ -92,6 +97,28 @@ const Dashboard = () => {
                 </button>
               </li>
             </ul>
+
+            {/* Role Toggle Switch */}
+            <div className="mt-5 w-100 px-3 d-flex flex-column align-items-start">
+              <div className="form-check form-switch fs-5">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="roleSwitch"
+                  style={{ width: "60px", height: "30px" }}
+                  checked={role === "Employee"}
+                  onChange={handleToggle}
+                />
+                <label
+                  className="form-check-label text-white ms-3 fw-semibold"
+                  htmlFor="roleSwitch"
+                  style={{ fontSize: "1.25rem" }}
+                >
+                  {role}
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 
