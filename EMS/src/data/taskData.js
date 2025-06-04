@@ -21,6 +21,7 @@ const sampleTitles = [
   "Performance Testing",
   "Integrate OAuth",
   "Write Test Cases",
+  "Deploy Application",
 ];
 
 const statuses = ["Pending", "In Progress", "Completed"];
