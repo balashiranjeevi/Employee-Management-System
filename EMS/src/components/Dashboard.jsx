@@ -45,8 +45,16 @@ const Dashboard = () => {
     }
   };
 
+  useEffect(() => {
+    const savedRole = localStorage.getItem("role");
+    if (savedRole) setRole(savedRole);
+  }, []);
+
   const handleToggle = () => {
-    setRole((prevRole) => (prevRole === "Admin" ? "Employee" : "Admin"));
+    const newRole = role === "Admin" ? "Employee" : "Admin";
+    setRole(newRole);
+    localStorage.setItem("role", newRole);
+    navigate(newRole === "Admin" ? "/dashboard" : "/dashboard/employee-home");
   };
 
   return (
@@ -67,26 +75,55 @@ const Dashboard = () => {
 
             {/* Navigation Links */}
             <ul className="nav nav-pills flex-column mb-auto w-100" id="menu">
-              <SidebarLink
-                to="/dashboard"
-                icon="bi-speedometer2"
-                label="Dashboard"
-              />
-              <SidebarLink
-                to="/dashboard/employee"
-                icon="bi-people"
-                label="Manage Employees"
-              />
-              <SidebarLink
-                to="/dashboard/category"
-                icon="bi-columns"
-                label="Category"
-              />
-              <SidebarLink
-                to="/dashboard/profile"
-                icon="bi-person"
-                label="Profile"
-              />
+              {role === "Admin" ? (
+                <>
+                  <SidebarLink
+                    to="/dashboard"
+                    icon="bi-speedometer2"
+                    label="Dashboard"
+                  />
+                  <SidebarLink
+                    to="/dashboard/employee"
+                    icon="bi-people"
+                    label="Manage Employees"
+                  />
+                  <SidebarLink
+                    to="/dashboard/category"
+                    icon="bi-columns"
+                    label="Category"
+                  />
+                  <SidebarLink
+                    to="/dashboard/profile"
+                    icon="bi-person"
+                    label="Profile"
+                  />
+                </>
+              ) : (
+                <>
+                  <SidebarLink
+                    to="/dashboard/employee-home"
+                    icon="bi-house"
+                    label="Home"
+                  />
+                  <SidebarLink
+                    to="/dashboard/tasks"
+                    icon="bi-list-task"
+                    label="My Tasks"
+                  />
+                  <SidebarLink
+                    to="/dashboard/attendance"
+                    icon="bi-calendar-check"
+                    label="Attendance"
+                  />
+                  <SidebarLink
+                    to="/dashboard/leaves"
+                    icon="bi-envelope-open"
+                    label="Leave Requests"
+                  />
+                </>
+              )}
+
+              {/* Logout is common */}
               <li>
                 <button
                   onClick={handleLogout}

@@ -10,6 +10,10 @@ import Profile from "./components/Profile";
 import AddCategory from "./components/AddCategory";
 import AddEmployee from "./components/AddEmployee";
 import EditEmployee from "./components/EditEmployee";
+import EmployeeHome from "./components/EmployeeHome";
+import Tasks from "./components/Tasks";
+import Attendance from "./components/Attendance";
+import Leaves from "./components/Leaves";
 
 function App() {
   return (
@@ -33,6 +37,10 @@ function App() {
             path="/dashboard/edit_employee/:id"
             element={<EditEmployee />}
           ></Route>
+          <Route path="employee-home" element={<EmployeeHome />} />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="attendance" element={<Attendance />} />
+          <Route path="leaves" element={<Leaves />} />
         </Route>
       </Routes>
     </BrowserRouter>
