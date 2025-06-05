@@ -42,7 +42,7 @@ const generateTasks = () => {
     deadline: randomDeadline(),
   }));
 };
-
+  
 const taskData = generateTasks();
 
 export default taskData;
