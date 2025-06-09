@@ -1,0 +1,9 @@
+select.bg-warning {
+  border-color: #ffc107;
+}
+select.bg-primary {
+  border-color: #0d6efd;
+}
+select.bg-success {
+  border-color: #198754;
+}
