@@ -45,17 +45,19 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    const savedRole = localStorage.getItem("role");
-    if (savedRole) setRole(savedRole);
-  }, []);
+  
+const handleToggle = () => {
+  const newRole = role === "Admin" ? "Employee" : "Admin";
+  setRole(newRole);
+  localStorage.setItem("role", newRole);
 
-  const handleToggle = () => {
-    const newRole = role === "Admin" ? "Employee" : "Admin";
-    setRole(newRole);
-    localStorage.setItem("role", newRole);
-    navigate(newRole === "Admin" ? "/dashboard" : "/dashboard/employee-home");
-  };
+  if (newRole === "Admin") {
+    navigate("/dashboard");
+  } else {
+    navigate("/dashboard/employee-home");
+  }
+};
+
 
   return (
     <div className="container-fluid">
