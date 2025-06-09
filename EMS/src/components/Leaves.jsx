@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+// Import icons from react-icons/bs (Bootstrap Icons)
+import { BsClipboardCheck, BsXCircle } from "react-icons/bs";
 
 const Leaves = () => {
   const [leaveForm, setLeaveForm] = useState({
@@ -38,7 +40,7 @@ const Leaves = () => {
 
   return (
     <div className="container py-4">
-      <h2 className="fw-bold mb-4 text-center">🗓️ Leave Application</h2>
+      <h2 className="fw-bold mb-4 text-center">Leave Application</h2>
 
       {/* Leave Form */}
       <div className="card shadow-sm border-0 mb-5">
@@ -104,8 +106,9 @@ const Leaves = () => {
 
       {/* Leave List */}
       <div className="card shadow-sm border-0">
-        <div className="card-header bg-white fw-semibold">
-          📋 Applied Leaves ({leaves.length})
+        <div className="card-header bg-white fw-semibold d-flex align-items-center gap-2">
+          <BsClipboardCheck size={20} />
+          Applied Leaves ({leaves.length})
         </div>
         <div className="card-body p-0">
           {leaves.length === 0 ? (
@@ -138,10 +141,10 @@ const Leaves = () => {
                     </td>
                     <td className="text-end">
                       <button
-                        className="btn btn-sm btn-outline-danger"
+                        className="btn btn-sm btn-outline-danger d-flex align-items-center gap-1"
                         onClick={() => cancelLeave(leave.id)}
                       >
-                        Cancel
+                        <BsXCircle size={16} /> Cancel
                       </button>
                     </td>
                   </tr>
