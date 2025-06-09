@@ -42,7 +42,7 @@ const Login = () => {
               id="email"
               name="email"
               autoComplete="off"
-              placeholder="Enter E-mail"
+              placeholder="Type - 'admin@gmail.com'"
               onChange={(e) => setValues({ ...values, email: e.target.value })}
               className="form-control rounded-0"
               required
@@ -56,7 +56,7 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
-              placeholder="Enter Password"
+              placeholder="Type - '12345'"
               onChange={(e) =>
                 setValues({ ...values, password: e.target.value })
               }

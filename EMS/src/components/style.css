@@ -59,7 +59,7 @@
 }
 
 .loginForm input::placeholder {
-  color: #ccc;
+  color: #ffffff;
 }
 
 .loginForm input:focus {
